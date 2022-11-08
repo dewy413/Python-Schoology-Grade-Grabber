@@ -2,13 +2,12 @@ import selenium.common.exceptions
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
-import time
 
 
 i = input("How many courses are you taking? (You count a lab as a separate class) \n")
 
 options = Options()
-options.add_argument("headless")
+#options.add_argument("headless")
 options.add_argument('--disable-gpu')
 driver = webdriver.Chrome(options=options)
 
@@ -24,8 +23,7 @@ pss.send_keys(password)
 
 pss.submit()
 
-#time.sleep(.4) # Sleep function so it doesn't just start trying to find elements that might have not loaded yet.
-#The line above isn't need, but I think it depends on your internet connection a bit.
+
 
 for i in range(3, 9):
     clss = driver.find_element(By.XPATH,
@@ -41,7 +39,6 @@ for i in range(3, 9):
         grade = "N/A"
 
     print(f"{clss.text} - {grade}")
-    #time.sleep(.4) # This isn't really needed, but I think it makes the grade display in a cooler more flowy way.
 
 print("\nSCRIPT COMPLETE")
 
